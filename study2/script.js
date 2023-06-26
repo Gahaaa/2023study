@@ -29,7 +29,7 @@ class Item {
             return false;
         }else{
     
-            editOrder(PrioritVal);
+            editOrder();
         }
 
       
@@ -74,19 +74,40 @@ const checkInput = () => {
 };
 
 const deletememos = () => {
-  while (memoList.hasChildNodes()) {
-    memoList.removeChild(memoList.firstChild);
+  if(confirm('모두 삭제하겠습니까?')){
+    while (memoList.hasChildNodes()) {
+      memoList.removeChild(memoList.firstChild);
+    }
+  }
+  
+};
+
+const editOrder = () => {
+  const memoItems = Array.from(memoList.children);
+
+  const sortedItems = memoItems.sort((a, b) => {
+    const aPriority = parseInt(a.querySelector('.priority').value);
+    const bPriority = parseInt(b.querySelector('.priority').value);
+
+    if (isNaN(aPriority) && isNaN(bPriority)) {
+      return 0; // a와 b 모두 우선순위가 없는 경우 순서를 변경하지 않음
+
+    } else if (isNaN(aPriority)) {
+      return 1; // a의 우선순위가 없는 경우 a를 b보다 아래로 내림
+
+    } else if (isNaN(bPriority)) {
+      return -1; // b의 우선순위가 없는 경우 b를 a보다 아래로 내림
+
+    }
+
+    return aPriority - bPriority;
+  });
+
+  for (const item of sortedItems) {
+    memoList.appendChild(item);
   }
 };
 
-const editOrder = (val) => {
-    let orderArr =[];
-    console.log(val)
-
-    
-
-
-}
 
 RemoveAllButton.addEventListener("click", deletememos);
 AddmemoButton.addEventListener("click", checkInput);
