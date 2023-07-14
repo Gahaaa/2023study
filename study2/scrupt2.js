@@ -1,5 +1,3 @@
-//로컬스토리지 저장
-
 const AddmemoButton = document.getElementById("add-memo");
 const RemoveAllButton = document.getElementById("remove-all");
 const memoList = document.querySelector(".memos");
@@ -97,6 +95,8 @@ const editOrder = () => {
     } else if (isNaN(bPriority)) {
       return -1; // b의 우선순위가 없는 경우 b를 a보다 아래로 내림
     }
+    console.log(aPriority);
+    console.log(bPriority);
 
     return aPriority - bPriority;
   });
