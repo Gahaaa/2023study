@@ -47,7 +47,96 @@ document.querySelector('button').addEventListener('click', (e) => {
 
 <br>
 
-### filter
-
-
 ### map
+map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
+```js
+arr.map(callback(currentValue[, index[, array]])[, thisArg])
+```
+
+**callback**
+* 새로운 배열 요소를 생성하는 함수. 다음 세 가지 인수를 가집니다.
+
+
+**currentValue**
+* 처리할 현재 요소.
+
+**index**
+
+* 처리할 현재 요소의 인덱스.
+
+**array**
+* map()을 호출한 배열.
+
+**thisArg**
+* callback을 실행할 때 this로 사용되는 값.
+
+<br>
+
+#### 숫자배열 재구성
+
+``` js
+var numbers = [1, 4, 9];
+var doubles = numbers.map(function(num) {
+  return num * 2;
+});
+// doubles는 이제 [2, 8, 18]
+// numbers는 그대로 [1, 4, 9]
+```
+
+#### map을 포괄적으로 사용하기 (querySelectorAll)
+```js
+var elems = document.querySelectorAll('select option:checked');
+var values = [].map.call(elems, function(obj) {
+  return obj.value;
+});
+//객체들을 순회 처리
+```
+
+
+<br>
+
+---
+
+<br>
+
+### filter
+filter() 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환합니다.
+
+```js
+arr.filter(callback(element[, index[, array]])[, thisArg])
+```
+
+**callback**
+* 새로운 배열 요소를 생성하는 함수. 다음 세 가지 인수를 가집니다.
+
+
+**currentValue**
+* 처리할 현재 요소.
+
+**index**
+
+* 처리할 현재 요소의 인덱스.
+
+**array**
+* map()을 호출한 배열.
+
+**thisArg**
+* callback을 실행할 때 this로 사용되는 값.
+
+(map과 동일)
+
+<br>
+
+```js
+const solution = (a, b) => {
+    const arr = [...a];
+    const answer = arr.filter((el,idx)=> (idx+1)%b == 0);
+    console.log(answer)
+    
+}
+solution([1,2,3,4],2)
+
+//[2,4]
+```
+
+
