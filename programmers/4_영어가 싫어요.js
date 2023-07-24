@@ -8,19 +8,52 @@ numbers	result
 "onefourzerosixseven"	14067
 */
 
-/*
-고민중~~~~~
-우짤까
-*/
 
+//map 사용
 function solution(numbers) {
-    const arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    const num = [ "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    num.map((i, idx)=>{
+        numbers = numbers.split(i).join(idx)
+    })
+    return parseInt(numbers)
+}
+
+//forEach 사용
+function solution(numbers) {
+    const num = [ "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    num.forEach((i, idx)=>{
+        numbers = numbers.split(i).join(idx)
+    })
+    return parseInt(numbers)
+}
+
+//for 사용
+function solution(numbers) {
+    const num = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
     
-    
-    for(i=0;i<numbers.length;i++){
-        
+    for(let i = 0; i < num.length; i++){
+        numbers = numbers.split(num[i]).join(i)
+        console.log(numbers)
+        // console.log(numbers.split(num[i]))
     }
     
-    
-    
 }
+
+/*
+split(separator, limit)
+-separator: 원본 문자열을 끊어야 할 부분을 나타내는 문자열을 나타냅니다.
+-limit: 끊어진 문자열의 최대 개수를 나타내는 정수
+
+number "oneoneonetwothreetwo"
+
+"11twothreetwo"
+"112three2"
+"11232"
+
+
+아하,,,
+
+
+
+
+ */
