@@ -46,9 +46,6 @@ split(separator, limit)
 
 number "oneoneonetwothreetwo"
 
-numbers = numbers.split(num[i]).join(i)
-console.log(numbers)
-=>
 "11twothreetwo"
 "112three2"
 "11232"
